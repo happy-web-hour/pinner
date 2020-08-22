@@ -18,6 +18,7 @@ class FlaskConfig:
         self.app.register_blueprint(pinner_controller)
 
     def run_app(self):
+        self.app.config['CORS_HEADERS'] = 'Content-Type'
         self.app.run(
             debug=True,
             use_reloader=False,

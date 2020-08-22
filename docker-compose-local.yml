@@ -1,0 +1,11 @@
+version: "3"
+services:
+ mongo-pinner:
+  image: mongo:4.2.5
+  container_name: mongo-pinner
+  ports:
+  - "27019:27017"
+  environment:
+    MONGO_INITDB_DATABASE: pinner
+  volumes:
+   - ./resources/mongodb:/docker-entrypoint-initdb.d

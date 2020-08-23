@@ -1,3 +1,4 @@
+import logging
 import os
 
 from flask import Flask
@@ -9,6 +10,7 @@ from src.controller.PinnerController import pinner_controller
 class FlaskConfig:
     app = Flask(__name__)
     cors = CORS(app)
+    app.config['CORS_HEADERS'] = 'Content-Type'
 
     def __call__(self):
         self.register_blue_prints()
@@ -18,7 +20,6 @@ class FlaskConfig:
         self.app.register_blueprint(pinner_controller)
 
     def run_app(self):
-        self.app.config['CORS_HEADERS'] = 'Content-Type'
         self.app.run(
             debug=True,
             use_reloader=False,

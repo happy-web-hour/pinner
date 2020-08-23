@@ -10,7 +10,6 @@ pinner_controller = Blueprint('PinnerController', __name__)
 
 class PinnerController:
     @staticmethod
-    @cross_origin()
     @pinner_controller.route('/pin', methods=['POST'])
     def create_pin():
         response: dict
@@ -25,7 +24,6 @@ class PinnerController:
         return UtilController.build_response(response, status_code)
 
     @staticmethod
-    @cross_origin()
     @pinner_controller.route('/pin/<string:pin>', methods=['PATCH'])
     def add_user(pin: str):
         response: dict
@@ -44,7 +42,6 @@ class PinnerController:
         return UtilController.build_response(response, status_code)
 
     @staticmethod
-    @cross_origin()
     @pinner_controller.route('/pin/<string:pin>/<string:user_id>', methods=['DELETE'])
     def delete_user(pin: str, user_id: str):
         response: dict = {}
@@ -62,7 +59,6 @@ class PinnerController:
         return UtilController.build_response(response, status_code)
 
     @staticmethod
-    @cross_origin()
     @pinner_controller.route('/pin/<string:pin>/users', methods=['GET'])
     def list_users(pin: str):
         response: dict
@@ -78,7 +74,6 @@ class PinnerController:
         return UtilController.build_response(response, status_code)
 
     @staticmethod
-    @cross_origin()
     @pinner_controller.route('/pin', methods=['GET'])
     def list_pin():
         response: dict
